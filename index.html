@@ -3,19 +3,30 @@
 <head>
 <meta charset="utf-8">
 <title>Birth Year</title>
+ <link rel="stylesheet" href="style.css" >
 </head>
 
 <body>
 
 
 	<div class="class1">
-		<form style="margin-top:100px"> 
+		<form style="margin-top:100px" > 
 			<input style="height:30px; width:400px; padding-left:5px;" placeholder="Type your age..." type="number" name="number1" id="number1" />
-			<input style="height:35px;" type="button" value="Find Year" id="button" />
+			<input style="height:35px;" type="button" value="Find Year" id="button1" />
 			<p id="year1">Year</p>
 		</form>
 	</div>
 	
+	<div class="class2">
+		
+		<form style="margin-top:100px"> 
+			<input style="height:30px; width:400px; padding-left:5px;" placeholder="Type the year..." type="number" name="number" id="number" />
+			<input style="height:35px;" type="button" value="View Age  " id="button" />
+			<p id="year">Year</p>
+		</form>
+		
+	</div>
+
 
 <script type="text/javascript">
 	
@@ -39,8 +50,32 @@
 
 	
 	document.getElementById("year1").style.display = "none";
-	document.getElementById("button").onclick = function() {  calculate();  };
+	document.getElementById("button1").onclick = function() {  calculate();  };
 	
+	
+	function calc() {
+	
+	var date = new Date().getFullYear()
+
+	
+	var number =  document.getElementById("number").value;
+		
+		if (number == "" || number < 0 || number > date ) {
+			
+			window.alert("Please type a valid year(from 0 BC to date)!");
+			return;
+		}
+		
+		var age = date - number;
+			console.log(date)
+		document.getElementById("year").style.display = "block";
+		document.getElementById("year").innerHTML = "Age in " + number + " = " + age;
+	
+	
+	}
+	
+	document.getElementById("year").style.display = "none";
+	document.getElementById("button").onclick = function() {  calc();  };
 	
 </script>
 
